@@ -11,7 +11,14 @@
     <header>
         <img id="logo" alt="Restaurant Logo">
         <h1>Menu</h1>
+        <button id="cart-button">Cart (0)</button>
     </header>
+    <div id="cart" class="cart hidden">
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p>Total: <span id="total-amount">₹0</span></p>
+        <button id="close-cart">Close</button>
+    </div>
     <div id="category-pills" class="category-pills"></div>
     <div id="menu-container" class="menu-grid"></div>
 

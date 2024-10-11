@@ -1,13 +1,12 @@
 const googleSheetURL = 'https://sheets.googleapis.com/v4/spreadsheets/1u57aB5atkMbABo3SXlLiBw1VG9rP_fMgMnr_3GCKvuk/values/Sheet1?key=AIzaSyA5MpOPdy6cyAZKWQ542uEBhJ5V49Il7NI';
+let cart = [];
 
 async function fetchData() {
     const response = await fetch(googleSheetURL);
     const data = await response.json();
 
     const items = data.values.slice(1); 
-
     document.getElementById('logo').src = 'item[0][4]';
-
 
     const categories = [...new Set(items.map(item => item[2]))];
 
@@ -36,7 +35,8 @@ function renderItems(items) {
         itemDiv.innerHTML = `
             <img src="${imageLink}" alt="${name}">
             <h3>${name}</h3>
-            <p>Price: ${price}</p>
+            <p>Price: ₹${price}</p>
+            <button onclick="addToCart('${name}', ${price})">Add to Cart</button>
         `;
 
         menuContainer.appendChild(itemDiv);
@@ -53,4 +53,40 @@ function filterItems(category) {
         });
 }
 
+function addToCart(name, price) {
+    cart.push({ name, price });
+    updateCartButton();
+}
+
+function updateCartButton() {
+    const cartButton = document.getElementById('cart-button');
+    cartButton.textContent = `Cart (${cart.length})`;
+}
+
+function showCart() {
+    const cartSection = document.getElementById('cart');
+    const cartItems = document.getElementById('cart-items');
+    const totalAmount = document.getElementById('total-amount');
+
+    cartItems.innerHTML = '';
+    let total = 0;
+
+    cart.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.name} - ₹${item.price}`;
+        cartItems.appendChild(li);
+        total += item.price;
+    });
+
+    totalAmount.textContent = `₹${total}`;
+    cartSection.classList.remove('hidden');
+}
+
+function closeCart() {
+    const cartSection = document.getElementById('cart');
+    cartSection.classList.add('hidden');
+}
+
+document.getElementById('cart-button').addEventListener('click', showCart);
+document.getElementById('close-cart').addEventListener('click', closeCart);
 document.addEventListener('DOMContentLoaded', fetchData);
