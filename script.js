@@ -60,7 +60,7 @@ function addToCart(name, price) {
 
 function updateCartButton() {
     const cartButton = document.getElementById('cart-button');
-    cartButton.textContent = `Cart (${cart.length})`;
+    cartButton.textContent = `🛒 Cart (${cart.length})`;
 }
 
 function showCart() {
@@ -71,15 +71,27 @@ function showCart() {
     cartItems.innerHTML = '';
     let total = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = `${item.name} - ₹${item.price}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '❌'; // Using an emoji for the delete button
+        deleteButton.onclick = () => deleteFromCart(index);
+
+        li.appendChild(deleteButton);
         cartItems.appendChild(li);
         total += item.price;
     });
 
     totalAmount.textContent = `₹${total}`;
     cartSection.classList.remove('hidden');
+}
+
+function deleteFromCart(index) {
+    cart.splice(index, 1);
+    updateCartButton();
+    showCart(); // Re-render the cart to update the UI
 }
 
 function closeCart() {
