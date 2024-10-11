@@ -71,23 +71,25 @@ header button:hover {
 .cart ul li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin: 5px 0;
     font-size: 1em;
 }
 
-.cart button {
-    background-color: #007bff;
+.cart ul li button {
     color: white;
-    padding: 10px 15px;
     border: none;
-    border-radius: 20px;
+    border-radius: 50%;
     cursor: pointer;
+    padding: 5px 10px;
+    font-size: 0.8em;
     transition: background-color 0.3s, transform 0.3s;
+    margin-left: 10px;
 }
 
-.cart button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
+.cart ul li button:hover {
+    background-color: #cc0000;
+    transform: scale(1.1);
 }
 
 .category-pills {

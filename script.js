@@ -71,9 +71,15 @@ function showCart() {
     cartItems.innerHTML = '';
     let total = 0;
 
-    cart.forEach(item => {
+    cart.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = `${item.name} - ₹${item.price}`;
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = '❌'; 
+        deleteButton.onclick = () => deleteFromCart(index);
+
+        li.appendChild(deleteButton);
         cartItems.appendChild(li);
         total += item.price;
     });
@@ -81,6 +87,13 @@ function showCart() {
     totalAmount.textContent = `₹${total}`;
     cartSection.classList.remove('hidden');
 }
+
+function deleteFromCart(index) {
+    cart.splice(index, 1);
+    updateCartButton();
+    showCart(); // Re-render the cart to update the UI
+}
+
 
 function closeCart() {
     const cartSection = document.getElementById('cart');
