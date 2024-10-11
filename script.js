@@ -6,7 +6,7 @@ async function fetchData() {
 
     const items = data.values.slice(1); 
 
-    document.getElementById('logo').src = 'items[0][4]';
+    document.getElementById('logo').src = 'data.item[0][4]';
 
     const categories = [...new Set(items.map(item => item[2]))];
 
