@@ -35,7 +35,7 @@ function renderItems(items) {
         itemDiv.innerHTML = `
             <img src="${imageLink}" alt="${name}">
             <h3>${name}</h3>
-            <p>Price: ₹${price}</p>
+            <p>₹${price}</p>
             <button onclick="addToCart('${name}', ${price})">Add to Cart</button>
         `;
 
@@ -64,11 +64,12 @@ function showToast(message) {
     }, 3000); 
 }
 
-function addToCart(item) {
-    cart.push(item);
+function addToCart(name, price) {
+    cart.push({ name, price });
     updateCartButton();
-    showToast('Item added to cart!'); 
+    showToast('Item added to cart!');
 }
+
 
 
 function updateCartButton() {
@@ -89,7 +90,7 @@ function showCart() {
         li.textContent = `${item.name} - ₹${item.price}`;
 
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = '❌'; 
+        deleteButton.textContent = '❌';
         deleteButton.onclick = () => deleteFromCart(index);
 
         li.appendChild(deleteButton);
@@ -100,6 +101,7 @@ function showCart() {
     totalAmount.textContent = `₹${total}`;
     cartSection.classList.remove('hidden');
 }
+
 
 function deleteFromCart(index) {
     cart.splice(index, 1);
