@@ -52,11 +52,24 @@ function filterItems(category) {
             renderItems(filteredItems);
         });
 }
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('show');
 
-function addToCart(name, price) {
-    cart.push({ name, price });
-    updateCartButton();
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.classList.add('hidden');
+    }, 3000); 
 }
+
+function addToCart(item) {
+    cart.push(item);
+    updateCartButton();
+    showToast('Item added to cart!'); 
+}
+
 
 function updateCartButton() {
     const cartButton = document.getElementById('cart-button');
