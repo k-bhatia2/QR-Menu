@@ -53,9 +53,10 @@ function filterItems(category) {
         });
 }
 
-function addToCart(name, price) {
-    cart.push({ name, price });
+function addToCart(item) {
+    cart.push(item);
     updateCartButton();
+    showToast('Item added to cart!'); // Show toast message
 }
 
 function updateCartButton() {
@@ -71,15 +72,9 @@ function showCart() {
     cartItems.innerHTML = '';
     let total = 0;
 
-    cart.forEach((item, index) => {
+    cart.forEach(item => {
         const li = document.createElement('li');
         li.textContent = `${item.name} - ₹${item.price}`;
-
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = '❌'; // Using an emoji for the delete button
-        deleteButton.onclick = () => deleteFromCart(index);
-
-        li.appendChild(deleteButton);
         cartItems.appendChild(li);
         total += item.price;
     });
@@ -88,15 +83,21 @@ function showCart() {
     cartSection.classList.remove('hidden');
 }
 
-function deleteFromCart(index) {
-    cart.splice(index, 1);
-    updateCartButton();
-    showCart(); // Re-render the cart to update the UI
-}
-
 function closeCart() {
     const cartSection = document.getElementById('cart');
     cartSection.classList.add('hidden');
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.classList.remove('hidden');
+    toast.classList.add('show');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+        toast.classList.add('hidden');
+    }, 3000); // Toast disappears after 3 seconds
 }
 
 document.getElementById('cart-button').addEventListener('click', showCart);
