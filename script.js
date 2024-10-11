@@ -117,4 +117,8 @@ function closeCart() {
 
 document.getElementById('cart-button').addEventListener('click', showCart);
 document.getElementById('close-cart').addEventListener('click', closeCart);
-document.addEventListener('DOMContentLoaded', fetchData);
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.style.userSelect = "none";
+    fetchData();
+});
+
