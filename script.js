@@ -6,7 +6,7 @@ async function fetchData() {
 
     const items = data.values.slice(1); 
 
-    document.getElementById('logo').src = 'https://quickgick.com/wp-content/uploads/2024/10/QG_black-2048x581.png';
+    document.getElementById('logo').src = 'item[0][4]';
 
     const categories = [...new Set(items.map(item => item[2]))];
 
