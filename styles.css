@@ -1,11 +1,8 @@
-*{
-     background-color: #fffbf4;
-}
-
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #fffbf4;
 }
 
 header {
@@ -25,6 +22,72 @@ header h1 {
     text-align: center;
     flex-grow: 1;
     margin: 0;
+}
+
+header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+header button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.cart {
+    position: fixed;
+    top: 15%;
+    right: 5%;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    max-width: 90%;
+    z-index: 1000;
+}
+
+.cart.hidden {
+    display: none;
+}
+
+.cart h2 {
+    margin: 0 0 15px;
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+.cart ul {
+    list-style: none;
+    padding: 0;
+}
+
+.cart ul li {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+    font-size: 1em;
+}
+
+.cart button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.cart button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 .category-pills {
@@ -78,10 +141,27 @@ header h1 {
 
 .menu-item h3 {
     margin: 10px 0;
+    font-size: 1.2em;
 }
 
 .menu-item p {
     color: #333;
+}
+
+.menu-item button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    margin-bottom: 10px;
+}
+
+.menu-item button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
@@ -119,47 +199,4 @@ header h1 {
         border: none;
         box-shadow: none;
     }
-}
-
-.cart {
-    position: fixed;
-    top: 20%;
-    right: 20%;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 300px;
-    max-width: 90%;
-    z-index: 1000;
-}
-
-.cart.hidden {
-    display: none;
-}
-
-.cart h2 {
-    margin: 0 0 10px;
-}
-
-.cart ul {
-    list-style: none;
-    padding: 0;
-}
-
-.cart ul li {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-}
-
-.cart button {
-    margin-top: 10px;
-    background-color: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
