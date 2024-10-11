@@ -195,9 +195,9 @@ header button:hover {
 
 @media (max-width: 768px) {
     header {
-        flex-direction: row; /* Change to row */
-        justify-content: space-between; /* Ensure elements are spaced evenly */
-        align-items: center; /* Align items vertically centered */
+        flex-direction: row; 
+        justify-content: space-between; 
+        align-items: center; 
     }
 
     header img {
@@ -208,12 +208,12 @@ header button:hover {
     header h1 {
         margin: 0;
         font-size: 1.5em;
-        flex-grow: 1; /* Allow h1 to grow and take center space */
-        text-align: center; /* Center the text */
+        flex-grow: 1; 
+        text-align: center;
     }
 
     header button {
-        margin-left: 20px; /* Add margin to button for spacing */
+        margin-left: 20px; 
     }
 
     .menu-grid {
