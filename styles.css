@@ -195,8 +195,9 @@ header button:hover {
 
 @media (max-width: 768px) {
     header {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row; /* Change to row */
+        justify-content: space-between; /* Ensure elements are spaced evenly */
+        align-items: center; /* Align items vertically centered */
     }
 
     header img {
@@ -205,8 +206,14 @@ header button:hover {
     }
 
     header h1 {
-        margin-top: 10px;
+        margin: 0;
         font-size: 1.5em;
+        flex-grow: 1; /* Allow h1 to grow and take center space */
+        text-align: center; /* Center the text */
+    }
+
+    header button {
+        margin-left: 20px; /* Add margin to button for spacing */
     }
 
     .menu-grid {
