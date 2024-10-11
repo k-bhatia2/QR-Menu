@@ -61,7 +61,7 @@ function addToCart(item) {
 
 function updateCartButton() {
     const cartButton = document.getElementById('cart-button');
-    cartButton.textContent = `🛒 Cart (${cart.length})`;
+    cartButton.textContent = `Cart (${cart.length})`;
 }
 
 function showCart() {
